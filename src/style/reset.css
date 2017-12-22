@@ -1,0 +1,78 @@
+/*
+ * 初始化
+ */
+
+body {
+    font-family: 'Microsoft YaHei', tahoma, arial, 'Hiragino Sans GB', \5b8b\4f53, sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td,
+s {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: inline-block;
+}
+
+em {
+    font-style: normal;
+}
+/* a */
+
+a,
+a:focus,
+a:visited,
+a:link,
+a:hover {
+	outline: none;
+    text-decoration: none;
+}
+
+/* 元素i、select、input、textarea、button */
+
+i {
+    vertical-align: middle;
+}
+
+i,
+label,
+input[type='checkbox'] {
+    vertical-align: middle;
+}
+
+
+/* form表单中的label */
+label {
+    font-weight: normal;
+}
+
