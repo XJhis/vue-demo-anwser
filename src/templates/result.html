@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>成绩页面</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <script src="../config/rem.js"></script>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .answer-grade {
+            width: 100%;
+            height: 100%;
+            padding-top: 2.5rem;
+            background: url('../imgs/gradeBg.jpg') no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .answer-grade .grade {
+            background: url('../imgs/grade.png') no-repeat center;
+            background-size: 100% 100%;
+            width: 11.5rem;
+            height: 10.5rem;
+            margin: 0 auto;
+
+        }
+
+        .answer-grade .grade>span {
+            display: block;
+            position: relative;
+            top: 6rem;
+            color: #313131;
+            font-size: 1.7rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="answer-grade">
+        <div class="grade">
+            <span>80分!</span>
+        </div>
+    </div>
+</body>
+
+</html>
