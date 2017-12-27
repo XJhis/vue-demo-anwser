@@ -24,17 +24,15 @@
             </div>            
         </div>
         <div class="answer-btn">
-
-			<router-link class="start" :to="{name:'item', params: {id: 12}}" v-if="type === 'start'" tag="button"></router-link>
-			<router-link class="next" to="/" v-if="type === 'step'" tag="button"></router-link>
-			<router-link class="commit" to="/" v-if="type === 'step'" tag="button"></router-link>
-			<!-- <a href="javascript:void(0)" @click="toStep">编程式导航</a> -->            
+          <router-link class="start" :to="{name:'item'}" v-if="type === 'start'" tag="button"></router-link>
+          <router-link class="next" to="/" v-if="type === 'step'" tag="button"></router-link>
+          <router-link class="commit" to="/" v-if="type === 'step'" tag="button"></router-link>
+          <!-- <a href="javascript:void(0)" @click="toStep">编程式导航</a> -->            
         </div>
     </div>
 </template>
 
 <script>
-
 export default {
   name: "AnswerStep",
   props: ["answerType"],
@@ -44,14 +42,12 @@ export default {
     };
   },
   methods: {
-	  toStep() {
-		  this.$router.push('step'); //直接写字符串，对应的是path
-		  this.$router.push({path: 'step'}) 
-		//   this.$router.push({name: 'item', params: { id: 123 }}) //带简单参数
-
-		//   this.$router.push({ path: 'step', query: { plan: 'private' }}) //带查询参数
-
-	  }
+    toStep() {
+      this.$router.push("step"); //直接写字符串，对应的是path
+      this.$router.push({ path: "step" });
+      //   this.$router.push({name: 'item', params: { id: 123 }}) //带简单参数
+      //   this.$router.push({ path: 'step', query: { plan: 'private' }}) //带查询参数
+    }
   }
 };
 </script>

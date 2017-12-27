@@ -13,7 +13,7 @@ export default new Router({
       component: HomeIndex
     },
     {
-      path: '/step/:id',
+      path: '/step',
       name: 'item',
       component: Step
     }
