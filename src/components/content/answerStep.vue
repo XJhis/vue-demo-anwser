@@ -1,7 +1,9 @@
 <template>
+
     <div class="answer">
+		<h3 style="color:#fff">{{allMoney}}</h3>
         <div class="answer-tips">
-            <span v-if="type === 'start'">答题啦</span>
+            <span v-if="type === 'start'">{{topTitle}}</span>
             <span v-if="type === 'step'">第题</span>
         </div>
         <div class="answer-cont">
@@ -27,15 +29,27 @@
           <router-link class="start" :to="{name:'item'}" v-if="type === 'start'" tag="button"></router-link>
           <router-link class="next" to="/" v-if="type === 'step'" tag="button"></router-link>
           <router-link class="commit" to="/" v-if="type === 'step'" tag="button"></router-link>
-          <!-- <a href="javascript:void(0)" @click="toStep">编程式导航</a> -->            
+          <!-- <a href="javascript:void(0)" @click="toStep">编程式导航</a>     -->
+		  <button @click="add">++</button>
         </div>
     </div>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex'
+
 export default {
   name: "AnswerStep",
   props: ["answerType"],
+  computed: {	  
+    ...mapState([
+		'topTitle',
+		'num'
+	]),
+	...mapGetters({
+		allMoney: 'money'
+	})
+  },
   data() {
     return {
       type: this.answerType || "start"
@@ -47,7 +61,11 @@ export default {
       this.$router.push({ path: "step" });
       //   this.$router.push({name: 'item', params: { id: 123 }}) //带简单参数
       //   this.$router.push({ path: 'step', query: { plan: 'private' }}) //带查询参数
-    }
+	},
+	add() {
+		// this.$store.commit('add', 10);
+		this.$store.dispatch('addAct')
+	}
   }
 };
 </script>
