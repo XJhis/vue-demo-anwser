@@ -16,7 +16,7 @@
                 </header>
                 <ul>                    
                     <li class="active" v-for="(value, key) in currentTopic.item">
-                        <i class="icon-item">{{key}}</i>{{value.cont}}
+                        <i class="icon-item">{{key | itemType}}</i>{{value.cont}}
                     </li>                    
                 </ul>
             </div>            
@@ -41,7 +41,8 @@ export default {
   },
   data() {
     return {
-      type: this.answerType || "start"
+      type: this.answerType || "start",
+      
     };
   },
   methods: {
@@ -52,6 +53,17 @@ export default {
       //   this.$router.push({ path: 'step', query: { plan: 'private' }}) //带查询参数
     },
     ...mapMutations(['initData'])
+  },
+  filters: {
+    itemType(num) {
+      const obj = {
+        0: 'A',
+        1: 'B',
+        2: 'C',
+        3: 'D'
+      }
+      return obj[num] || 'A'
+    }
   },
   created() {
 	  this.initData();
