@@ -1,7 +1,6 @@
 <template>
 
     <div class="answer">
-		<h3 style="color:#fff">{{allMoney}}</h3>
         <div class="answer-tips">
             <span v-if="type === 'start'">{{topTitle}}</span>
             <span v-if="type === 'step'">第题</span>
@@ -12,15 +11,12 @@
             </div>
             <div class="mod-topic" v-if="type === 'step'">
                 <header>
-                    <div class="left">题目1：</div>
-                    <div class="right">你知道十万个为什么吗？你知道十万个为什么吗？你知道十万个为什么吗？</div>
+                    <div class="left">题目{{currentTopic.rank}}：</div>
+                    <div class="right">{{currentTopic.title}}</div>
                 </header>
-                <ul>
-                    <li>
-                        <i class="icon-item">A</i>初闻不识曲中意
-                    </li>
-                    <li class="active">
-                        <i class="icon-item">A</i>初闻不识曲中意
+                <ul>                    
+                    <li class="active" v-for="(value, key) in currentTopic.item">
+                        <i class="icon-item">{{key}}</i>{{value.cont}}
                     </li>                    
                 </ul>
             </div>            
@@ -30,25 +26,18 @@
           <router-link class="next" to="/" v-if="type === 'step'" tag="button"></router-link>
           <router-link class="commit" to="/" v-if="type === 'step'" tag="button"></router-link>
           <!-- <a href="javascript:void(0)" @click="toStep">编程式导航</a>     -->
-		  <button @click="add">++</button>
         </div>
     </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions} from "vuex";
 
 export default {
   name: "AnswerStep",
   props: ["answerType"],
-  computed: {	  
-    ...mapState([
-		'topTitle',
-		'num'
-	]),
-	...mapGetters({
-		allMoney: 'money'
-	})
+  computed: {
+    ...mapState(["topTitle", "currentTopic", "answer", "topic"])
   },
   data() {
     return {
@@ -61,11 +50,11 @@ export default {
       this.$router.push({ path: "step" });
       //   this.$router.push({name: 'item', params: { id: 123 }}) //带简单参数
       //   this.$router.push({ path: 'step', query: { plan: 'private' }}) //带查询参数
-	},
-	add() {
-		// this.$store.commit('add', 10);
-		this.$store.dispatch('addAct')
-	}
+    },
+    ...mapMutations(['initData'])
+  },
+  created() {
+	  this.initData();
   }
 };
 </script>

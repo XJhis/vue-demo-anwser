@@ -1,6 +1,7 @@
 const mutations = {
-    add(state, num) {
-        state.num ++;
+    initData(state) { //初始化数据
+        state.answer = [];
+        state.currentTopic = state.topic[0];
     }
 }
 
