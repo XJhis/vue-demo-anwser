@@ -15,8 +15,8 @@
                     <div class="right">{{currentTopic.title}}</div>
                 </header>
                 <ul>                    
-                    <li class="active" v-for="(value, key) in currentTopic.item">
-                        <i class="icon-item">{{key | itemType}}</i>{{value.cont}}
+                    <li :class="{active: activeKey === key}" v-for="(value, key) in currentTopic.item" @click="chooseAnswer(value.id, key)">
+                        <i class="icon-item">{{answerName[key]}}</i>:&nbsp;&nbsp;{{value.cont}}
                     </li>                    
                 </ul>
             </div>            
@@ -42,28 +42,27 @@ export default {
   data() {
     return {
       type: this.answerType || "start",
-      
+      activeKey: null,    
+      answerName:  {
+        0: 'A',
+        1: 'B',
+        2: 'C',
+        3: 'D'
+      }
     };
   },
-  methods: {
+  methods: {    
+    ...mapMutations(['initData']),
     toStep() {
       this.$router.push("step"); //直接写字符串，对应的是path
       this.$router.push({ path: "step" });
       //   this.$router.push({name: 'item', params: { id: 123 }}) //带简单参数
       //   this.$router.push({ path: 'step', query: { plan: 'private' }}) //带查询参数
     },
-    ...mapMutations(['initData'])
-  },
-  filters: {
-    itemType(num) {
-      const obj = {
-        0: 'A',
-        1: 'B',
-        2: 'C',
-        3: 'D'
-      }
-      return obj[num] || 'A'
-    }
+    chooseAnswer(id, key) {
+      this.activeKey = key;
+
+    },
   },
   created() {
 	  this.initData();
