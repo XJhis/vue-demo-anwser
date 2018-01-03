@@ -1,6 +1,7 @@
 <template>
   <div>
-      <AnswerStep answer-type="start"></AnswerStep>    
+      <AnswerStep answer-type="start"></AnswerStep>  
+      <!-- <el-button type="primary">主要按钮</el-button>   -->
   </div>
 </template>
 
