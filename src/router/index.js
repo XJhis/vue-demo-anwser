@@ -4,6 +4,7 @@ import HomeIndex from '@/page/home/index.vue'
 import Step from '@/page/step/index.vue'
 import FormCheck1 from '@/page/home/formCheck1.vue'
 import FormCheck2 from '@/page/home/formCheck2.vue'
+import Table from '@/page/mode/table.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/check2',
       name: 'login',
       component: FormCheck2
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: Table
     }
   ]
 })
